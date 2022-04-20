@@ -1,0 +1,28 @@
+<div class="mx-auto mt-3" style="width: 300px">
+  <div class="card mb-3">
+    <img class="card-img-top" [src]="character.image" [alt]="character.name" />
+    <div class="card-body">
+      <h5 class="card-title">{{ character.name }}</h5>
+      <p class="card-text">
+        Status: <small class="text-muted">{{ character.status }}</small>
+      </p>
+      <p class="card-text">
+        Species: <small class="text-muted">{{ character.species }}</small>
+      </p>
+      <p class="card-text">
+        Type: <small class="text-muted">{{ character.type }}</small>
+      </p>
+      <p class="card-text">
+        Gender: <small class="text-muted">{{ character.gender }}</small>
+      </p>
+      <p class="card-text">
+        Origin: <small class="text-muted">{{ character.origin.name }}</small>
+      </p>
+      <p class="card-text">
+        Location:
+        <small class="text-muted">{{ character.location.name }}</small>
+      </p>
+    </div>
+  </div>
+  <button class="btn btn-primary"[routerLink]="['/home/list']" >Atras</button>
+</div>

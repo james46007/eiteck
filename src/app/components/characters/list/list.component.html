@@ -1,0 +1,65 @@
+<nav class="navbar navbar-light bg-light">
+  <div class="col-sm-8">
+    <a class="navbar-brand" href="#">
+      <img
+        src="assets/images/logo-dark.png"
+        width="20%"
+        height="10%"
+        class="d-inline-block align-top"
+        alt=""
+      />
+    </a>
+  </div>
+  <div class="col-sm-4">
+    <form class="input-group" (ngSubmit)="onSubmit()">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Nombre personaje"
+        aria-label="Recipient's username"
+        aria-describedby="basic-addon2"
+        [(ngModel)]="characterName"
+        name="characterName"
+      />
+      <div class="input-group-append">
+        <input class="btn btn-outline-secondary" type="submit" value="Buscar" />
+      </div>
+    </form>
+  </div>
+</nav>
+
+<div class="row">
+  <div
+    class="col-sm-4"
+    *ngFor="
+      let character of characters
+        | paginate
+          : {
+              itemsPerPage: itemsPerPage,
+              currentPage: currentPage,
+              totalItems: totalItems
+            }
+    "
+  >
+    <div class="card m-3">
+      <a [routerLink]="['/home/list-one/', character.id]">
+        <img
+          class="card-img-top"
+          [src]="character.image"
+          alt="Card image cap"
+        />
+      </a>
+      <div class="card-body">
+        <p class="card-text">{{ character.name }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<pagination-controls
+  class="text-center"
+  [responsive]="true"
+  previousLabel="Anterior"
+  nextLabel="Siguiente"
+  (pageChange)="pageChanged($event)"
+></pagination-controls>
